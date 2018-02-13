@@ -1,10 +1,10 @@
 package com.saorsa.sharpedges.UnionFind;
 
-public class UnionQuickFind {
+public class QuickFind {
     private final int elementsCount;
     private final int[] elements;
 
-    public UnionQuickFind(int ElementsCount) {
+    public QuickFind(int ElementsCount) {
         this.elementsCount = ElementsCount;
         this.elements = new int[ElementsCount];
         for (int i = 0; i < this.elementsCount; i++) {
