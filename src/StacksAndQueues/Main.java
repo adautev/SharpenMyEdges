@@ -22,8 +22,8 @@ public class Main {
         stackLL.Push("This ");
 
         StringBuilder stackLLresult = new StringBuilder();
-        while (!stackLL.isEmpty()) {
-            stackLLresult.append(stackLL.Pop());
+        for(String s : stackLL) {
+            stackLLresult.append(s);
         }
         if(!stackLLresult.toString().trim().equals("This sentence is spelled backwards!")) {
             throw new Exception("You couldn't manage ONE stack!");
@@ -41,8 +41,8 @@ public class Main {
         stackAR.Push("sentence ");
         stackAR.Push("This ");
         StringBuilder stackARresult = new StringBuilder();
-        while (!stackAR.isEmpty()) {
-            stackARresult.append(stackAR.Pop());
+        for (String s : stackAR) {
+            stackARresult.append(s);
         }
         if(!stackARresult.toString().trim().equals("This sentence is spelled backwards!")) {
             throw new Exception("You couldn't manage ONE stack!");

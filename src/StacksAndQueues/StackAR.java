@@ -1,8 +1,9 @@
 package StacksAndQueues;
 
 import java.lang.reflect.Array;
+import java.util.Iterator;
 
-public class StackAR<T> {
+public class StackAR<T> implements Iterable<T>{
     private T[] elementsContainer = (T[]) new Object[1];
     private int elementsCounter;
     public StackAR() {
@@ -41,5 +42,24 @@ public class StackAR<T> {
             this.elementsContainer = newContainer;
         }
         return returnValue;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new StackARIterator();
+    }
+
+    private class StackARIterator implements Iterator<T> {
+        @Override
+        public boolean hasNext() {
+            return !isEmpty();
+        }
+
+        @Override
+        public T next() {
+            if(isEmpty())
+                throw new IndexOutOfBoundsException("The stack is empty. Next() is not supported in this context");
+            return Pop();
+        }
     }
 }
