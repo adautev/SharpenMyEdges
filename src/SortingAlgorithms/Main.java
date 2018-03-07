@@ -16,7 +16,8 @@ public class Main {
             throw new Exception("InsertSort.SortFor not working. (:");
         }
         Integer[] testArraySelectionSort = {3,7,4,9,5,2,6,1};
-        if (!Arrays.equals(SelectionSort.Sort(testArraySelectionSort),new Integer[] {9,7,6,5,4,3,2,1})) {
+        SelectionSort.Sort(testArraySelectionSort);
+        if (!Arrays.equals(testArraySelectionSort,new Integer[] {9,7,6,5,4,3,2,1})) {
             throw new Exception("SelectionSort not working. (:");
         }
         System.out.println("Sorting tests completed successfully.");

@@ -1,9 +1,9 @@
 package SortingAlgorithms;
 
 public class SelectionSort {
-    public static <T extends Comparable<T>> T[] Sort(T[] elements) {
+    public static void Sort(Comparable[] elements) {
         for (int i=0; i < elements.length; i++) {
-            T min = elements[i];
+            Comparable min = elements[i];
             int swapIndex = 0;
             for (int j = i+1; j < elements.length; j++) {
                 if(min.compareTo(elements[j]) < 0) {
@@ -16,6 +16,5 @@ public class SelectionSort {
                 elements[i] = min;
             }
         }
-        return elements;
     }
 }
