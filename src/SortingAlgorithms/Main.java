@@ -26,6 +26,12 @@ public class Main {
         if(!Arrays.equals(testArrayShellSort, sortedTestArrayShellSort)) {
             throw new Exception("Shell sort not working. (:");
         }
+        //Tough proof :D
+        Integer[] shuffledArray = new Integer[] {1,2,3,4,5,6,7,9};
+        ShuffleSort.Shuffle(shuffledArray);
+        if(Arrays.equals(new Integer[] {1,2,3,4,5,6,7,9}, shuffledArray)){
+            throw new Exception("Shuffle sort not working. (:");
+        }
         System.out.println("Sorting tests completed successfully.");
     }
 
