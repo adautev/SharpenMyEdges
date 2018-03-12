@@ -32,6 +32,14 @@ public class Main {
         if(Arrays.equals(new Integer[] {1,2,3,4,5,6,7,9}, shuffledArray)){
             throw new Exception("Shuffle sort not working. (:");
         }
+
+
+        String[] mergeSortTestArray = "a z x c e r t y j h l k h y".split(" ");
+        String[] mergeSortresult = (String[]) MergeSort.Sort(mergeSortTestArray);
+        if(Arrays.equals(new String[] {"a","c","c","c","e","h","h","h","h","j","j","l","r","y"}, mergeSortresult)){
+            throw new Exception("Merge sort not working. (:");
+        }
+
         System.out.println("Sorting tests completed successfully.");
     }
 
