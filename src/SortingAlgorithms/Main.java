@@ -39,7 +39,11 @@ public class Main {
         if(Arrays.equals(new String[] {"a","c","c","c","e","h","h","h","h","j","j","l","r","y"}, mergeSortresult)){
             throw new Exception("Merge sort not working. (:");
         }
-
+        String[] quickSortTestArray = "a z x c e r t y j h l k h y".split(" ");
+        QuickSort.Sort(quickSortTestArray);
+        if(Arrays.equals(new String[] {"a","c","c","c","e","h","h","h","h","j","j","l","r","y"}, quickSortTestArray)){
+            throw new Exception("Merge sort not working. (:");
+        }
         System.out.println("Sorting tests completed successfully.");
     }
 
