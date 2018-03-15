@@ -31,8 +31,30 @@ public class Particle
         if (d < 0) return -1;
         return -(dvdr + Math.sqrt(d)) / dvdv;
     }
-    public double TimeToHitVerticalWall() { return 0; }
-    public double TimeToHitHorizontalWall() { return 0;}
+    public double TimeToHitVerticalWall(int positionX) {
+        double dx = positionX - this.rx, dy = 0 - this.ry;
+        double dvx = 0 - this.vx, dvy = 0 - this.vy;
+        double dvdr = dx*dvx + dy*dvy;
+        if( dvdr > 0) return -1;
+        double dvdv = dvx*dvx + dvy*dvy;
+        double drdr = dx*dx + dy*dy;
+        double sigma = this.radius + 1; //assuming the wall is 1 whatever thick
+        double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
+        if (d < 0) return -1;
+        return -(dvdr + Math.sqrt(d)) / dvdv;
+    }
+    public double TimeToHitHorizontalWall(int positionY) {
+        double dx = 0 - this.rx, dy = positionY - this.ry;
+        double dvx = 0 - this.vx, dvy = 0 - this.vy;
+        double dvdr = dx*dvx + dy*dvy;
+        if( dvdr > 0) return -1;
+        double dvdv = dvx*dvx + dvy*dvy;
+        double drdr = dx*dx + dy*dy;
+        double sigma = this.radius + 1; //assuming the wall is 1 whatever thick
+        double d = (dvdr*dvdr) - dvdv * (drdr - sigma*sigma);
+        if (d < 0) return -1;
+        return -(dvdr + Math.sqrt(d)) / dvdv;
+    }
     public void BounceOff(Particle that) {
         double dx = that.rx - this.rx, dy = that.ry - this.ry;
         double dvx = that.vx - this.vx, dvy = that.vy - this.vy;
@@ -48,7 +70,17 @@ public class Particle
         this.count++;
         that.count++;
     }
-    public void BounceOffVerticalWall() {}
+    public void BounceOffVerticalWall(int positionX) {
+        double dx = positionX - this.rx, dy = 0 - this.ry;
+        double dvx = 0 - this.vx, dvy = 0 - this.vy;
+        double dvdr = dx*dvx + dy*dvy;
+        double dist = this.radius + 1;
+        double J = 2 * this.mass * 1 * dvdr / ((this.mass + 1) * dist);
+        double Jx = J * dx / dist;
+        double Jy = J * dy / dist;
+        this.vx += Jx / this.mass;
+        this.vy += Jy / this.mass;
+    }
     public void BounceOffHorizontalWall() {}
 
 
