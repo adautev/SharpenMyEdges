@@ -28,6 +28,19 @@ public class Main {
         if(rank != 3){
             throw new Exception("Binary search rank not implemented correctly");
         }
+
+        LeftLeaningRedBlueTree<String, String> testLLRBTree = new LeftLeaningRedBlueTree<>();
+        testLLRBTree.Put("R", "R");
+        testLLRBTree.Put("C", "C");
+        testLLRBTree.Put("E", "E");
+        testLLRBTree.Put("H", "H");
+        testLLRBTree.Put("J", "J");
+        testLLRBTree.Put("O", "O");
+        testLLRBTree.Put("A", "A");
+        String testLLRBTreeRepresentation = testLLRBTree.toString();
+        if(!testLLRBTreeRepresentation.equals("ACEHJOR")){
+            throw new Exception("Left Leaning Right Blue tree not sorted correctly");
+        }
     }
 
 }
