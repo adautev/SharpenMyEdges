@@ -3,30 +3,33 @@ package Graphs;
 import StacksAndQueues.Bag;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class UndirectedGraph {
-    private final int vertices;
-    private Bag<Integer>[] adjacendies;
-    private int elementsCount;
+import java.util.Iterator;
 
-    public UndirectedGraph(int vertices){
-        this.vertices = vertices;
-        this.adjacendies = (Bag<Integer>[])new Bag[vertices];
-        for(Bag<Integer> adj: this.adjacendies) {
-            adj = new Bag<>();
+public class UndirectedGraph {
+    private Bag<Integer>[] adjacendies;
+    private int sourceInex;
+
+    public UndirectedGraph(int elementsCount){
+        this.sourceInex = elementsCount;
+        this.adjacendies = (Bag<Integer>[])new Bag[elementsCount];
+        for(int i = 0; i < elementsCount; i++) {
+            this.adjacendies[i]= new Bag<>();
         }
     }
-    Iterable<Integer> AdjacentVertices(int vertice) {
-        throw new NotImplementedException();
+    public Iterable<Integer> AdjacentVertices(int vertice) {
+        return this.adjacendies[vertice];
     }
-    int CountVertices() {
-        throw new NotImplementedException();
+    public int CountVertices() {
+        return this.adjacendies.length;
     }
-    int CountEdges() {
-        throw new NotImplementedException();
+    public int CountEdges() {
+        return this.sourceInex;
     }
-    void AddEdge(int vertice, int weight) {
-        this.adjacendies[vertice].Add(weight);
-        this.adjacendies[weight].Add(vertice);
-        this.elementsCount++;
+    void AddEdge(int vertice, int targetVertice) {
+        this.adjacendies[vertice].Add(targetVertice);
+        this.adjacendies[targetVertice].Add(vertice);
+        this.sourceInex++;
     }
+
+
 }
