@@ -1,12 +1,14 @@
 package Graphs;
 
+import Graphs.Connectivity.GraphConnectivityParser;
 import Graphs.Search.DepthFirstPathFinder;
+import com.sun.corba.se.impl.orbutil.graph.Graph;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-
+        //Вхат'с бест if not the schoolbook sample? (;
         UndirectedGraph udGraph = new UndirectedGraph(13);
         udGraph.AddEdge(0,5);
         udGraph.AddEdge(4,3);
@@ -29,7 +31,13 @@ public class Main {
         if(!traverseResult.toString().equals("54601")) {
             throw new Exception("Depth first path finder not implemented correctly");
         }
-        System.out.println("Stacks and queues tests completed successfully.");
+        int testConnectedComponents = 3;
+        GraphConnectivityParser gcp = new GraphConnectivityParser(udGraph);
+        if(gcp.Count() != 3) {
+            throw new Exception("Graph connectivity parser not implemented correctly");
+        }
+        System.out.println("Graph operation tests completed successfully.");
+
     }
 
 }
